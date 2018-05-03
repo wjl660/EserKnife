@@ -109,7 +109,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
     $($(".select_clustom_time")[0]).addClass("select");
 
     $scope.loadHost = function () {
-        ElasticService.clusterRequest2("/eser/monitor/getHosts?clusterName="+clusterName,
+        ElasticService.clusterRequest2("/eserknife/monitor/getHosts?clusterName="+clusterName,
             'GET', "", {}, {},
             function (res) {
                 if (res.success) {
@@ -157,7 +157,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
             $('#'+dataType).empty();
             $('#'+dataType).append('<div id="'+dataType+'tt"></div>');
             $('#'+dataType+'tt').jqxLoader({theme:"metrodark", text:'',width: 40, height: 35, imagePosition: 'top', autoOpen: true });
-            ElasticService.clusterRequest2("/eser/monitor/getMonitorInfo",
+            ElasticService.clusterRequest2("/eserknife/monitor/getMonitorInfo",
                 'POST', "",
                 {
                     "clusterName":clusterName,
@@ -295,7 +295,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('resouceUsed');
@@ -355,7 +355,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('heapMem');
@@ -440,7 +440,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('GC');
@@ -510,7 +510,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('indicesSegments');
@@ -568,7 +568,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('search_requests_per_second');
@@ -633,7 +633,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('search_time_per_second');
@@ -698,7 +698,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('indexing_requests_per_second');
@@ -763,7 +763,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('indexing_time_per_second');
@@ -828,7 +828,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('get_requests_per_second');
@@ -900,7 +900,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('get_time_per_second');
@@ -972,7 +972,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall(data.option.title[0].text);
@@ -1047,7 +1047,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('threads');
@@ -1112,7 +1112,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('mem');
@@ -1193,7 +1193,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('channels');
@@ -1258,7 +1258,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('transport_size');

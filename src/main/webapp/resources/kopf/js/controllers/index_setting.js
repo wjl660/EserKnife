@@ -31,7 +31,7 @@ kopf.controller('SettingIndexController', ['$scope', '$location',
 
         $scope.saveSetting = function saveSetting(newSettings,index,settingName) {
             var settingStr = btoa(JSON.stringify(newSettings)); // angular post nested json 报403,先对其base64处理
-            ElasticService.clusterRequest3("/eser/indexmsg/settingIndex",
+            ElasticService.clusterRequest3("/eserknife/indexmsg/settingIndex",
                 'POST',
                 {
                     settings: settingStr,

@@ -192,7 +192,7 @@ kopf.factory('ElasticService', ['$http', '$q', '$timeout', '$location',
 
 
             this.createIndex = function(template, success, error) {
-                var url = "/eser/indexmsg/addNewIndex";
+                var url = "/eserknife/indexmsg/addNewIndex";
                 var indexName = template.name;
                 var body = template.body;
                 var params={"clusterName":clusterName,"indexName":indexName,"settings":body};
@@ -238,15 +238,15 @@ kopf.factory('ElasticService', ['$http', '$q', '$timeout', '$location',
                 //this.addAuth(params);
                 $q.all([
                     $http.get(
-                        'http://'+$location.$$host+':'+$location.$$port+'/eser/stats/shards?indexName='+index+'&clusterName='+clusterName,
+                        'http://'+$location.$$host+':'+$location.$$port+'/eserknife/stats/shards?indexName='+index+'&clusterName='+clusterName,
                         params
                     )
                     /* $http.get(
-                        'http://'+$location.$$host+':'+$location.$$port+'/eser/_stats?level=shards&human',
+                        'http://'+$location.$$host+':'+$location.$$port+'/eserknife/_stats?level=shards&human',
                         params
                     ),
                     $http.get(
-                        'http://'+$location.$$host+':'+$location.$$port+'/eser/_recovery?active_only=true&human',
+                        'http://'+$location.$$host+':'+$location.$$port+'/eserknife/_recovery?active_only=true&human',
                         params
                     )*/
                 ]).then(
@@ -286,7 +286,7 @@ kopf.factory('ElasticService', ['$http', '$q', '$timeout', '$location',
 
             this.clusterRequest = function (method, path, params, data, success, error) {
 
-                var url = 'http://'+$location.$$host+':'+$location.$$port+'/eser/esproxy?method='+method+'&clusterName='+clusterName+'&target=' + btoa(path);
+                var url = 'http://'+$location.$$host+':'+$location.$$port+'/eserknife/esproxy?method='+method+'&clusterName='+clusterName+'&target=' + btoa(path);
                 var config = {method: method, url: url, data: data, params: params};
                 $http(config).success(function (data, status, headers, config) {
                     try {
@@ -365,7 +365,7 @@ kopf.factory('ElasticService', ['$http', '$q', '$timeout', '$location',
             };
 
             this.getClusterDetail = function (success, error) {
-                var baseUrl = 'http://'+$location.$$host+':'+$location.$$port+'/eser/esproxy?method=GET&clusterName='+clusterName+'&target=';
+                var baseUrl = 'http://'+$location.$$host+':'+$location.$$port+'/eserknife/esproxy?method=GET&clusterName='+clusterName+'&target=';
                 var params = {};
                 //this.addAuth(params);
                 $q.all([
@@ -464,7 +464,7 @@ kopf.factory('ElasticService', ['$http', '$q', '$timeout', '$location',
 
             this.deleteIndex = function(index, success, error) {
                 var path = encode(index);
-                this.clusterRequest2('/eser/indexmsg/delIndex?clusterName='+clusterName+'&indexName='+ path ,'GET', {}, {}, {}, success, error);
+                this.clusterRequest2('/eserknife/indexmsg/delIndex?clusterName='+clusterName+'&indexName='+ path ,'GET', {}, {}, {}, success, error);
             };
 
             /**

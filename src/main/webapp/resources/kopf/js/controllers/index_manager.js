@@ -72,7 +72,7 @@ kopf.controller('ManagerIndexController', ['$scope', '$location',
                 return;
             }
 
-            ElasticService.clusterRequest3("/eser/indexmsg/parseSql",
+            ElasticService.clusterRequest3("/eserknife/indexmsg/parseSql",
                 'POST',{
                     sql:all_ddls,
                     clusterName:clusterName
@@ -194,7 +194,7 @@ kopf.controller('ManagerIndexController', ['$scope', '$location',
                 if(body){
                     if (!isDefined($scope.managerEditor.error)) {
                         var params={"clusterName":clusterName,"data":body,"url":url,"method":method};
-                        ElasticService.clusterRequest2("/eser/indexmsg/indexManager" +
+                        ElasticService.clusterRequest2("/eserknife/indexmsg/indexManager" +
                             "", 'POST', {}, params, {},
                             function (res) {
                                 $("#confirm_dialog2").hide();
@@ -233,7 +233,7 @@ kopf.controller('ManagerIndexController', ['$scope', '$location',
         }
 
         $scope.loadDataSources = function(){
-            ElasticService.clusterRequest2("/eser/indexmsg/getDataSource",
+            ElasticService.clusterRequest2("/eserknife/indexmsg/getDataSource",
                 'GET', "", {}, {},
                 function (res) {
                     if (res) {
@@ -245,7 +245,7 @@ kopf.controller('ManagerIndexController', ['$scope', '$location',
         }
 
         $scope.loadTabNames = function (dsId) {
-            ElasticService.clusterRequest2("/eser/indexmsg/getTabNamesByDs?dsId=" + dsId,
+            ElasticService.clusterRequest2("/eserknife/indexmsg/getTabNamesByDs?dsId=" + dsId,
                 'GET', "", {}, {},
                 function (res) {
                     if (res) {
@@ -605,7 +605,7 @@ function db_table_handlerNew($scope, $location) {
     $scope.$watch('tabNameIndexManager', function (current, previous) {
         if (isDefined(current)) {
             $scope.source.url = 'http://' + $location.$$host + ':' + $location.$$port
-                + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
+                + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
             $('#dbcol-gridIndexManager').jqxGrid('clearselection');
             $('#dbcol-gridIndexManager').jqxGrid('updatebounddata');
         }
@@ -622,7 +622,7 @@ function db_table_handler_update($scope, $location) {
     $scope.$watch('updateTabName', function (current, previous) {
         if (isDefined(current)) {
             $scope.updateSource.url = 'http://' + $location.$$host + ':' + $location.$$port
-                + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsUpdateId+'&tabName='
+                + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsUpdateId+'&tabName='
                 + $scope.updateTabName+'&clusterName='+clusterName;
 
             $('#update_dbcol-gridIndexManager').jqxGrid('clearselection');
@@ -635,7 +635,7 @@ function db_table_handler_update($scope, $location) {
 
 function db_column_handler_update($scope, $location) {
     $scope.updateUrl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/indexmsg/getColInfoByTabname?dsId='+(isDefined($scope.dsUpdateId)?$scope.dsUpdateId:"")+
+        + '/eserknife/indexmsg/getColInfoByTabname?dsId='+(isDefined($scope.dsUpdateId)?$scope.dsUpdateId:"")+
         '&tabName=' + (isDefined($scope.updateTabName)?$scope.updateTabName:"")+'&clusterName='+clusterName;
     $scope.updateSource = {
         datatype: "json",
@@ -692,7 +692,7 @@ function db_column_handler_update($scope, $location) {
 
 function db_column_handlerNew($scope, $location) {
     $scope.dataurl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/indexmsg/getColInfoByTabname?dsId='+(isDefined($scope.dsId)?$scope.dsId:"")+
+        + '/eserknife/indexmsg/getColInfoByTabname?dsId='+(isDefined($scope.dsId)?$scope.dsId:"")+
     '&tabName=' + (isDefined($scope.tabNameIndexManager)?$scope.tabNameIndexManager:"")+'&clusterName='+clusterName;
     $scope.source = {
         datatype: "json",

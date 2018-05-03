@@ -5,7 +5,7 @@
     <title>欢迎进入</title>
 </head>
 <script language="JavaScript">
-    window.location = '${baseContextPath}' + '/eser/index/techplat';
+    window.location = '${baseContextPath}' + '/eserknife/index/techplat';
 </script>
 
 </html>

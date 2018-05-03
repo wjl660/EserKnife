@@ -327,7 +327,7 @@ function($scope, $location, $timeout, AlertService, ElasticService,AceEditorServ
             if(body){
                 if (!isDefined($scope.aliasEditor.error)) {
                     var params={"clusterName":clusterName,"data":body,"url":url,"method":method};
-                    ElasticService.clusterRequest2("/eser/aliasManager/createAll" +
+                    ElasticService.clusterRequest2("/eserknife/aliasManager/createAll" +
                         "", 'POST', {}, params, {},
                         function (res) {
                             if (res && res.acknowledged) {

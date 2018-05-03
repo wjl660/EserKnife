@@ -87,7 +87,7 @@ var selectedClusterName = undefined;
 
 var connectTo = function(url, refreshInterval, storeSize, dispatcher, selectedView, callback) {
 
-    var connectionConfig = { baseUrl: '/eser/bigdesk/proxy?clusterName='+clusterNameFromBack+'&target=' };
+    var connectionConfig = { baseUrl: '/eserknife/bigdesk/proxy?clusterName='+clusterNameFromBack+'&target=' };
     var clusterHealth = new ClusterHealth({},connectionConfig);
 
     clusterHealth.fetch({
@@ -103,7 +103,7 @@ var connectTo = function(url, refreshInterval, storeSize, dispatcher, selectedVi
 
                 console.log("Found a new cluster [" + clusterName + "]");
 
-                var target = '/eser/bigdesk/proxy?clusterName='+clusterNameFromBack+'&target=';
+                var target = '/eserknife/bigdesk/proxy?clusterName='+clusterNameFromBack+'&target=';
                 bigdeskStore.addCluster(
 
                     // Keep in mind 'new Cluster()' is a heavy operation

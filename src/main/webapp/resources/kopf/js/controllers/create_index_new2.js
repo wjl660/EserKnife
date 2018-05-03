@@ -63,7 +63,7 @@ kopf.controller('IndexManageController', ['$scope', '$location',
         $scope.generateSqlArea = function () {
             var all_ddls = $('#sqlAreaIndexManager').jqxTextArea('val');
 
-            ElasticService.clusterRequest3("/eser/indexmsg/parseSql",
+            ElasticService.clusterRequest3("/eserknife/indexmsg/parseSql",
                 'POST',{
                     sql:all_ddls,
                     clusterName:clusterName
@@ -209,7 +209,7 @@ kopf.controller('IndexManageController', ['$scope', '$location',
 
 
         $scope.loadDataSources = function(){
-            ElasticService.clusterRequest2("/eser/indexmsg/getDataSource",
+            ElasticService.clusterRequest2("/eserknife/indexmsg/getDataSource",
                 'GET', "", {}, {},
                 function (res) {
                     if (res) {
@@ -220,7 +220,7 @@ kopf.controller('IndexManageController', ['$scope', '$location',
         }
 
         $scope.loadTabNames = function (dsId) {
-            ElasticService.clusterRequest2("/eser/indexmsg/getTabNamesByDs?dsId=" + dsId,
+            ElasticService.clusterRequest2("/eserknife/indexmsg/getTabNamesByDs?dsId=" + dsId,
                 'GET', "", {}, {},
                 function (res) {
                     if (res) {
@@ -285,7 +285,7 @@ function db_table_handlerNew($scope, $location, ElasticService) {
     $scope.$watch('tabNameIndexManager', function (current, previous) {
         if (isDefined(current)) {
             $scope.source.url = 'http://' + $location.$$host + ':' + $location.$$port
-                + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
+                + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
             $('#dbcol-gridIndexManager').jqxGrid('clearselection');
             $('#dbcol-gridIndexManager').jqxGrid('updatebounddata');
         }
@@ -295,7 +295,7 @@ function db_table_handlerNew($scope, $location, ElasticService) {
 
 function db_column_handlerNew($scope, $location) {
     $scope.dataurl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
+        + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
 
     $scope.source = {
         datatype: "json",

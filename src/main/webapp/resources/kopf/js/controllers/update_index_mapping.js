@@ -111,7 +111,7 @@ function indexUpdateMapComboboxHandler($scope, $timeout) {
 }
 
 function loadDataSources($scope,ElasticService){
-    ElasticService.clusterRequest2("/eser/indexmsg/getDataSource",
+    ElasticService.clusterRequest2("/eserknife/indexmsg/getDataSource",
         'GET', "", {}, {},
         function (res) {
             if (res) {
@@ -169,7 +169,7 @@ function db_table_handler($scope, $location, ElasticService) {
     $scope.$watch('tabName', function (current, previous) {
         if (isDefined(current)) {
             $scope.source.url = 'http://' + $location.$$host + ':' + $location.$$port
-                + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
+                + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
             $('#dbcol-grid').jqxGrid('clearselection');
             $('#dbcol-grid').jqxGrid('updatebounddata');
         }
@@ -178,7 +178,7 @@ function db_table_handler($scope, $location, ElasticService) {
 
     $scope.loadTabNames = function (ds) {
 
-        ElasticService.clusterRequest2("/eser/indexmsg/getTabNamesByDs?dsId=" + $scope.dsId,
+        ElasticService.clusterRequest2("/eserknife/indexmsg/getTabNamesByDs?dsId=" + $scope.dsId,
             'GET', "", {}, {},
             function (res) {
                 if (res) {
@@ -190,7 +190,7 @@ function db_table_handler($scope, $location, ElasticService) {
 }
 function db_column_handler($scope, $location) {
     $scope.dataurl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
+        + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
 
     $scope.source = {
         datatype: "json",
@@ -268,7 +268,7 @@ function toolActionHandler($scope, AlertService,ElasticService) {
     $scope.generateSqlArea = function () {
         var all_ddls = $('#sqlArea').jqxTextArea('val');
 
-        ElasticService.clusterRequest3("/eser/indexmsg/parseSql",
+        ElasticService.clusterRequest3("/eserknife/indexmsg/parseSql",
             'POST',{
                 sql:all_ddls,
                 clusterName:clusterName
@@ -332,7 +332,7 @@ function submitActionHandler($scope, ElasticService, AlertService, ConfirmDialog
             typeName: $scope.field_type,
             newColsJson: $scope.submitJsonBody
         };
-        ElasticService.clusterRequest2("/eser/indexmsg/addNewCols",
+        ElasticService.clusterRequest2("/eserknife/indexmsg/addNewCols",
             'POST',
             "",
             params,

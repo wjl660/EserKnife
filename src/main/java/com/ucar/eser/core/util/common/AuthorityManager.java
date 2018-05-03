@@ -27,21 +27,21 @@ public class AuthorityManager {
 	public static final Set<String> ADMINURL =  new HashSet<String>();
 	
 	static {
-		ADMINURL.add("/eser/clusterInfo/getList");
-		ADMINURL.add("/eser/user/manager/getUserList");
-		ADMINURL.add("/eser/manage/quartz/list");
-		ADMINURL.add("/eser/alarm/rule/getAlarmRuleList");
+		ADMINURL.add("/eserknife/clusterInfo/getList");
+		ADMINURL.add("/eserknife/user/manager/getUserList");
+		ADMINURL.add("/eserknife/manage/quartz/list");
+		ADMINURL.add("/eserknife/alarm/rule/getAlarmRuleList");
         //索引管理
-		ADMINURL.add("/eser/indexmsg/indexManager");
-		ADMINURL.add("/eser/indexmsg/delIndex");
-		ADMINURL.add("/eser/indexmsg/settingIndex");
-		ADMINURL.add("/eser/indexmsg/addNewIndex");
-        ADMINURL.add("/eser/indexmsg/addNewType");
-		ADMINURL.add("/eser/indexmsg/reindex");
-		ADMINURL.add("/eser/indexmsg/importIndex");
-		ADMINURL.add("/eser/bigdesk/proxy");
-		ADMINURL.add("/eser/query/exportOrDelete");
-		ADMINURL.add("/eser/nodesmng/startOrStop");
+		ADMINURL.add("/eserknife/indexmsg/indexManager");
+		ADMINURL.add("/eserknife/indexmsg/delIndex");
+		ADMINURL.add("/eserknife/indexmsg/settingIndex");
+		ADMINURL.add("/eserknife/indexmsg/addNewIndex");
+        ADMINURL.add("/eserknife/indexmsg/addNewType");
+		ADMINURL.add("/eserknife/indexmsg/reindex");
+		ADMINURL.add("/eserknife/indexmsg/importIndex");
+		ADMINURL.add("/eserknife/bigdesk/proxy");
+		ADMINURL.add("/eserknife/query/exportOrDelete");
+		ADMINURL.add("/eserknife/nodesmng/startOrStop");
 	}
 
     private final static Logger LOGGER = LoggerFactory.getLogger(AuthorityManager.class);

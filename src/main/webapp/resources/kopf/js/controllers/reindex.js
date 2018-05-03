@@ -111,7 +111,7 @@ function submitActionHandler($scope, ElasticService, AlertService, ConfirmDialog
             clusterName: clusterName,
             newColsJson: $scope.editor.getValue()
         };
-        ElasticService.clusterRequest2("/eser/indexmsg/reindex",
+        ElasticService.clusterRequest2("/eserknife/indexmsg/reindex",
             'POST',
             "",
             params,

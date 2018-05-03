@@ -6,7 +6,7 @@
 
   <context-param>
     <param-name>webAppRootKey</param-name>
-    <param-value>webapp.eser</param-value>
+    <param-value>webapp.eserknife</param-value>
   </context-param>
   <!-- Spring ApplicationContext -->
   <context-param>

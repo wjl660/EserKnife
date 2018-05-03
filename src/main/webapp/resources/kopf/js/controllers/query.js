@@ -48,7 +48,7 @@ kopf.controller('QueryController', ['$scope', '$location','$timeout',
         	}
         	 var params = {name:name,indexName:$scope.curIndex,maxNum:$scope.resultMaxNum,queryConditions:conditions};
              var url = 'http://'+$location.$$host+':'+$location.$$port
-                 +'/eser/queryCollection/save?clusterName='+clusterName;
+                 +'/eserknife/queryCollection/save?clusterName='+clusterName;
              $('#jqxLoader').jqxLoader('open');
              ElasticService.clusterRequest2(url,'POST', "", params, {},
                  function(response) {
@@ -86,7 +86,7 @@ kopf.controller('QueryController', ['$scope', '$location','$timeout',
             //console.log(params);
             params.conds = JSON.stringify(conditions);
             var url = 'http://'+$location.$$host+':'+$location.$$port
-                +'/eser/query/proxy?clusterName='+clusterName;
+                +'/eserknife/query/proxy?clusterName='+clusterName;
 
             $('#jqxLoader').jqxLoader('open');
             ElasticService.clusterRequest2(url,'POST', "", params, {},
@@ -114,7 +114,7 @@ kopf.controller('QueryController', ['$scope', '$location','$timeout',
             //console.log(params);
             params.conds = JSON.stringify(conditions);
             var url = 'http://'+$location.$$host+':'+$location.$$port
-                +'/eser/query/exportOrDelete?clusterName='+clusterName;
+                +'/eserknife/query/exportOrDelete?clusterName='+clusterName;
 
             $("#submit4Deldoc").click();
             ConfirmDialogService2.open(
@@ -404,7 +404,7 @@ kopf.controller('QueryController', ['$scope', '$location','$timeout',
                 var value = item.value;
                 if (isDefined(value)) {
                     $scope.curIndex = value;
-                    source.url = "http://"+$location.$$host+':'+$location.$$port+'/eser/query/getFieldInfos?clusterName='+clusterName
+                    source.url = "http://"+$location.$$host+':'+$location.$$port+'/eserknife/query/getFieldInfos?clusterName='+clusterName
                         +'&queryString=&indexName='+$scope.curIndex;
                     dataAdapter.dataBind();  // 刷新绑定的数据
                 }
@@ -418,7 +418,7 @@ kopf.controller('QueryController', ['$scope', '$location','$timeout',
                 { name: 'fName' },
                 { name: 'fValue' }
             ],
-            url: "http://"+$location.$$host+':'+$location.$$port+'/eser/query/getFieldInfos?clusterName='+clusterName
+            url: "http://"+$location.$$host+':'+$location.$$port+'/eserknife/query/getFieldInfos?clusterName='+clusterName
                     +'&indexName=&queryString='
         };
         var dataAdapter = new $.jqx.dataAdapter(source);
@@ -528,7 +528,7 @@ function QueryCondition(cid,logicOps,fieldName,opsType,qText,gtOps,gtText,ltOps,
 
 function db_column_handler_type_query($scope, $location,AlertService) {
     $scope.dataurl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/queryCollection/getList?clusterName='+clusterName;
+        + '/eserknife/queryCollection/getList?clusterName='+clusterName;
     $scope.source = {
         datatype: "json",
         datafields: [
@@ -587,7 +587,7 @@ function db_column_handler_type_query($scope, $location,AlertService) {
         if(colName.indexOf("清除") > 0){
         	var id =event.args.value.substr(event.args.value.indexOf("(")+1,event.args.value.indexOf(")")-event.args.value.indexOf("(")-1);
 	       	 var url = 'http://' + $location.$$host + ':' + $location.$$port
-	         + '/eser/queryCollection/updateState?id='+id+'&clusterName='+clusterName;
+	         + '/eserknife/queryCollection/updateState?id='+id+'&clusterName='+clusterName;
 	         $.ajax({
 	             url: url,
 	             cache: false
@@ -605,7 +605,7 @@ function db_column_handler_type_query($scope, $location,AlertService) {
         	return;
         }else{
         	 var url = 'http://' + $location.$$host + ':' + $location.$$port
-             + '/eser/queryCollection/getDetailByName?name='+colName+'&clusterName='+clusterName;
+             + '/eserknife/queryCollection/getDetailByName?name='+colName+'&clusterName='+clusterName;
              $.ajax({
                  url: url,
                  cache: false

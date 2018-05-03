@@ -57,7 +57,7 @@ kopf.controller('ImportIndexController', ['$scope', '$location','$timeout',
 
         $scope.loadIndex = function (){
             if(!$('#indicesForm').jqxValidator('validate')) return;
-            var target = "/eser/indexmsg/getIndexList?clusterName="+clusterName
+            var target = "/eserknife/indexmsg/getIndexList?clusterName="+clusterName
                 +"&clusterAddr="+$scope.cluster_addr+":"+$scope.cluster_port+"&userpass="+$scope.cluster_userpass;
             ElasticService.clusterRequest3(target,
                 'GET',
@@ -81,7 +81,7 @@ kopf.controller('ImportIndexController', ['$scope', '$location','$timeout',
             }
             var indicesVal = JSON.stringify($scope.selectedIndics);
             console.log("indicesVal = "+indicesVal);
-            ElasticService.clusterRequest3("/eser/indexmsg/importIndex",
+            ElasticService.clusterRequest3("/eserknife/indexmsg/importIndex",
                 'POST',
                 {
                     indices:indicesVal,

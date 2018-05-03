@@ -129,7 +129,7 @@ kopf.controller('RestController', ['$scope', '$location', '$timeout',
                     console.log($scope.request.body);
 
                     var url = 'http://'+$location.$$host+':'+$location.$$port
-                        +'/eser/rest/proxy?clusterName='+clusterName;
+                        +'/eserknife/rest/proxy?clusterName='+clusterName;
                     var params = {
                         targetMethod:$scope.request.method,
                         targetPath:path,
@@ -172,7 +172,7 @@ kopf.controller('RestController', ['$scope', '$location', '$timeout',
                 var requireContent= data[0].data;
                 var params = {name:name,requireUrl:requireUrl,requireContent:requireContent,requireMethod:requireMethod};
                 var url = 'http://'+$location.$$host+':'+$location.$$port
-                    +'/eser/queryClientCollection/save?clusterName='+clusterName;
+                    +'/eserknife/queryClientCollection/save?clusterName='+clusterName;
                 $('#jqxLoaderClient').jqxLoader('open');
                 ElasticService.clusterRequest2(url,'POST', "", params, {},
                     function(response) {
@@ -319,7 +319,7 @@ kopf.controller('RestController', ['$scope', '$location', '$timeout',
 
 function db_column_handler_type_client($scope, $location,AlertService) {
     $scope.dataurl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/queryClientCollection/getList?clusterName='+clusterName;
+        + '/eserknife/queryClientCollection/getList?clusterName='+clusterName;
     $scope.source = {
         datatype: "json",
         datafields: [
@@ -375,7 +375,7 @@ function db_column_handler_type_client($scope, $location,AlertService) {
         if(colName.indexOf("清除") > 0){
         	var id =event.args.value.substr(event.args.value.indexOf("(")+1,event.args.value.indexOf(")")-event.args.value.indexOf("(")-1);
 	       	 var url = 'http://' + $location.$$host + ':' + $location.$$port
-	         + '/eser/queryClientCollection/updateState?id='+id+'&clusterName='+clusterName;
+	         + '/eserknife/queryClientCollection/updateState?id='+id+'&clusterName='+clusterName;
 	         $.ajax({
 	             url: url,
 	             cache: false
@@ -393,7 +393,7 @@ function db_column_handler_type_client($scope, $location,AlertService) {
         	return;
         }else{
         	 var url = 'http://' + $location.$$host + ':' + $location.$$port
-             + '/eser/queryClientCollection/getDetailByName?name='+colName+'&clusterName='+clusterName;
+             + '/eserknife/queryClientCollection/getDetailByName?name='+colName+'&clusterName='+clusterName;
              $.ajax({
                  url: url,
                  cache: false

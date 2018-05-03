@@ -129,13 +129,13 @@ function save(obj) {
 		success : function(data) {
 			alert(data.msg);
 			if (data.success) {
-				window.location.href="/eser/login.jsp";
+				window.location.href="/eserknife/login.jsp";
 			} 
 		}
 	});
 }
 function cancel(){
-	window.location.href="/eser/login.jsp";
+	window.location.href="/eserknife/login.jsp";
 }
 </script>
 

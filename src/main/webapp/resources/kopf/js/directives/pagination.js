@@ -6,7 +6,7 @@ kopf.directive('ngPagination', ['$document', function ($document) {
             page: '=page',
             label: '=label'
         },
-        templateUrl: '/eser/resources/kopf/html/partials/directives/pagination.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/directives/pagination.html',
         link: function (scope, element, attrs) {
             var handler = function (event) {
                 var $target = $(event.target);

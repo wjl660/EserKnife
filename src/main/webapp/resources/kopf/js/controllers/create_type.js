@@ -101,7 +101,7 @@ function typeHandler_type($scope, ElasticService, AlertService) {
     });
 }
 function  loadDataSources($scope,ElasticService){
-    ElasticService.clusterRequest2("/eser/indexmsg/getDataSource",
+    ElasticService.clusterRequest2("/eserknife/indexmsg/getDataSource",
         'GET', "", {}, {},
         function (res) {
             if (res) {
@@ -121,7 +121,7 @@ function db_table_handler_type($scope, $location, ElasticService) {
     $scope.$watch('tabName', function (current, previous) {
         if (isDefined(current)) {
             $scope.source.url = 'http://' + $location.$$host + ':' + $location.$$port
-                + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
+                + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
             $('#dbcol-grid_from_type').jqxGrid('clearselection');
             $('#dbcol-grid_from_type').jqxGrid('updatebounddata');
         }
@@ -131,7 +131,7 @@ function db_table_handler_type($scope, $location, ElasticService) {
 
     $scope.loadTabNames = function (ds) {
 
-        ElasticService.clusterRequest2("/eser/indexmsg/getTabNamesByDs?dsId=" + $scope.dsId,
+        ElasticService.clusterRequest2("/eserknife/indexmsg/getTabNamesByDs?dsId=" + $scope.dsId,
             'GET', "", {}, {},
             function (res) {
                 if (res) {
@@ -165,7 +165,7 @@ function demo_handler_type($scope, $location,AlertService){
         $scope.selectedDemoArr = [];
     };
     $scope.demoUrl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/indexmsg/getDemoData';
+        + '/eserknife/indexmsg/getDemoData';
     $scope.demoSource = {
         datatype: "json",
         url: $scope.demoUrl,
@@ -207,7 +207,7 @@ function demo_handler_type($scope, $location,AlertService){
 }
 function db_column_handler_type($scope, $location) {
     $scope.dataurl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
+        + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
 
     $scope.source = {
         datatype: "json",
@@ -285,7 +285,7 @@ function toolActionHandler_type($scope, AlertService,ElasticService) {
     $scope.generateSqlArea = function () {
         var all_ddls = $('#sqlArea_from_type').jqxTextArea('val');
 
-        ElasticService.clusterRequest3("/eser/indexmsg/parseSql",
+        ElasticService.clusterRequest3("/eserknife/indexmsg/parseSql",
             'POST',{
                 sql:all_ddls,
                 clusterName:clusterName
@@ -363,7 +363,7 @@ function submitActionHandler_type($scope, ElasticService, AlertService, ConfirmD
             typeName:$scope.field_type,
             newColsJson:$scope.submitJsonBody
         };
-        ElasticService.clusterRequest2("/eser/indexmsg/addNewType",
+        ElasticService.clusterRequest2("/eserknife/indexmsg/addNewType",
             'POST',
             "",
             params,
