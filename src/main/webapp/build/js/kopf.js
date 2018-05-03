@@ -4,67 +4,67 @@ var kopf = angular.module('kopf', ['ngRoute', 'ntt.TreeDnD', 'ngAnimate',
 kopf.config(function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('!');
     $routeProvider.when('/cluster', {
-        templateUrl: '/eser/resources/kopf/html/partials/cluster_overview.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/cluster_overview.html',
         controller: 'ClusterOverviewController'
     }).when('/nodes', {
-        templateUrl: '/eser/resources/kopf/html/partials/nodes/nodes.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/nodes/nodes.html',
         controller: 'NodesController'
     }).when('/rest', {
-        templateUrl: '/eser/resources/kopf/html/partials/rest_client.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/rest_client.html',
         controller: 'RestController'
     }).when('/query', {
-        templateUrl: '/eser/resources/kopf/html/partials/query.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/query.html',
         controller: 'QueryController'
     }).when('/stats', {
-        templateUrl: '/eser/resources/kopf/html/partials/stats.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/stats.html',
         controller: 'StatsController'
     }).when('/newStats', {
-        templateUrl: '/eser/resources/kopf/html/partials/new_stat.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/new_stat.html',
         controller: 'NewStatsController'
     }).when('/slowlog', {
-        templateUrl: '/eser/resources/kopf/html/partials/slowlog.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/slowlog.html',
         controller: 'SlowLogController'
     }).when('/slowlogquery', {
-        templateUrl: '/eser/resources/kopf/html/partials/slowlogquery.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/slowlogquery.html',
         controller: 'SlowLogQueryController'
     }).when('/updateMapping', {
-        templateUrl: '/eser/resources/kopf/html/partials/update_index_mapping.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/update_index_mapping.html',
         controller: 'UpdateMappingController'
     }).when('/createIndex', {
-        templateUrl: '/eser/resources/kopf/html/partials/create_index.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/create_index.html',
         controller: 'CreateIndexController'
     }).when('/createType', {
-        templateUrl: '/eser/resources/kopf/html/partials/create_type.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/create_type.html',
         controller: 'CreateTypeController'
     }).when('/importIndex', {
-        templateUrl: '/eser/resources/kopf/html/partials/index_import.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/index_import.html',
         controller: 'ImportIndexController'
     }).when('/settingIndex', {
-        templateUrl: '/eser/resources/kopf/html/partials/index_setting.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/index_setting.html',
         controller: 'SettingIndexController'
     }).when('/indexManager', {
-    templateUrl: '/eser/resources/kopf/html/partials/index_manager.html',
+    templateUrl: '/eserknife/resources/kopf/html/partials/index_manager.html',
     controller: 'ManagerIndexController'
     }).when('/indexManagerNew', {
-        templateUrl: '/eser/resources/kopf/html/partials/index_manager_new.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/index_manager_new.html',
         controller: 'IndexManageController'
     }).when('/exportIndex', {
-        templateUrl: '/eser/resources/kopf/html/partials/index_export.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/index_export.html',
         controller: 'ExportIndexController'
     }).when('/indexTemplate', {
-    templateUrl: '/eser/resources/kopf/html/partials/index_templates.html',
+    templateUrl: '/eserknife/resources/kopf/html/partials/index_templates.html',
         controller: 'IndexTemplatesController'
     }).when('/reindex', {
-        templateUrl: '/eser/resources/kopf/html/partials/reindex.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/reindex.html',
         controller: 'ReIndexController'
     }).when('/analysis', {
-        templateUrl: '/eser/resources/kopf/html/partials/analysis.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/analysis.html',
         controller: 'AnalysisController'
     }).when('/clientlogquery', {
-        templateUrl: '/eser/resources/kopf/html/partials/clientlogquery.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/clientlogquery.html',
         controller: 'ClientLogController'
     }).when('/aliasManager', {
-        templateUrl: '/eser/resources/kopf/html/partials/alias_manager.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/alias_manager.html',
         controller: 'AliasController'
     }).otherwise({redirectTo: '/cluster'});
 });
@@ -2342,7 +2342,7 @@ kopf.directive('ngPagination', ['$document', function ($document) {
             page: '=page',
             label: '=label'
         },
-        templateUrl: '/eser/resources/kopf/html/partials/directives/pagination.html',
+        templateUrl: '/eserknife/resources/kopf/html/partials/directives/pagination.html',
         link: function (scope, element, attrs) {
             var handler = function (event) {
                 var $target = $(event.target);
@@ -2721,7 +2721,7 @@ kopf.factory('ElasticService', ['$http', '$q', '$timeout', '$location',
 
 
             this.createIndex = function(template, success, error) {
-                var url = "/eser/indexmsg/addNewIndex";
+                var url = "/eserknife/indexmsg/addNewIndex";
                 var indexName = template.name;
                 var body = template.body;
                 var params={"clusterName":clusterName,"indexName":indexName,"settings":body};
@@ -2767,15 +2767,15 @@ kopf.factory('ElasticService', ['$http', '$q', '$timeout', '$location',
                 //this.addAuth(params);
                 $q.all([
                     $http.get(
-                        'http://'+$location.$$host+':'+$location.$$port+'/eser/stats/shards?indexName='+index+'&clusterName='+clusterName,
+                        'http://'+$location.$$host+':'+$location.$$port+'/eserknife/stats/shards?indexName='+index+'&clusterName='+clusterName,
                         params
                     )
                     /* $http.get(
-                        'http://'+$location.$$host+':'+$location.$$port+'/eser/_stats?level=shards&human',
+                        'http://'+$location.$$host+':'+$location.$$port+'/eserknife/_stats?level=shards&human',
                         params
                     ),
                     $http.get(
-                        'http://'+$location.$$host+':'+$location.$$port+'/eser/_recovery?active_only=true&human',
+                        'http://'+$location.$$host+':'+$location.$$port+'/eserknife/_recovery?active_only=true&human',
                         params
                     )*/
                 ]).then(
@@ -2815,7 +2815,7 @@ kopf.factory('ElasticService', ['$http', '$q', '$timeout', '$location',
 
             this.clusterRequest = function (method, path, params, data, success, error) {
 
-                var url = 'http://'+$location.$$host+':'+$location.$$port+'/eser/esproxy?method='+method+'&clusterName='+clusterName+'&target=' + btoa(path);
+                var url = 'http://'+$location.$$host+':'+$location.$$port+'/eserknife/esproxy?method='+method+'&clusterName='+clusterName+'&target=' + btoa(path);
                 var config = {method: method, url: url, data: data, params: params};
                 $http(config).success(function (data, status, headers, config) {
                     try {
@@ -2894,7 +2894,7 @@ kopf.factory('ElasticService', ['$http', '$q', '$timeout', '$location',
             };
 
             this.getClusterDetail = function (success, error) {
-                var baseUrl = 'http://'+$location.$$host+':'+$location.$$port+'/eser/esproxy?method=GET&clusterName='+clusterName+'&target=';
+                var baseUrl = 'http://'+$location.$$host+':'+$location.$$port+'/eserknife/esproxy?method=GET&clusterName='+clusterName+'&target=';
                 var params = {};
                 //this.addAuth(params);
                 $q.all([
@@ -2993,7 +2993,7 @@ kopf.factory('ElasticService', ['$http', '$q', '$timeout', '$location',
 
             this.deleteIndex = function(index, success, error) {
                 var path = encode(index);
-                this.clusterRequest2('/eser/indexmsg/delIndex?clusterName='+clusterName+'&indexName='+ path ,'GET', {}, {}, {}, success, error);
+                this.clusterRequest2('/eserknife/indexmsg/delIndex?clusterName='+clusterName+'&indexName='+ path ,'GET', {}, {}, {}, success, error);
             };
 
             /**
@@ -3870,7 +3870,7 @@ function($scope, $location, $timeout, AlertService, ElasticService,AceEditorServ
             if(body){
                 if (!isDefined($scope.aliasEditor.error)) {
                     var params={"clusterName":clusterName,"data":body,"url":url,"method":method};
-                    ElasticService.clusterRequest2("/eser/aliasManager/createAll" +
+                    ElasticService.clusterRequest2("/eserknife/aliasManager/createAll" +
                         "", 'POST', {}, params, {},
                         function (res) {
                             if (res && res.acknowledged) {
@@ -4872,7 +4872,7 @@ kopf.controller('IndexManageController', ['$scope', '$location',
         $scope.generateSqlArea = function () {
             var all_ddls = $('#sqlAreaIndexManager').jqxTextArea('val');
 
-            ElasticService.clusterRequest3("/eser/indexmsg/parseSql",
+            ElasticService.clusterRequest3("/eserknife/indexmsg/parseSql",
                 'POST',{
                     sql:all_ddls,
                     clusterName:clusterName
@@ -5078,7 +5078,7 @@ kopf.controller('IndexManageController', ['$scope', '$location',
 
 
         $scope.loadDataSources = function(){
-            ElasticService.clusterRequest2("/eser/indexmsg/getDataSource",
+            ElasticService.clusterRequest2("/eserknife/indexmsg/getDataSource",
                 'GET', "", {}, {},
                 function (res) {
                     if (res) {
@@ -5089,7 +5089,7 @@ kopf.controller('IndexManageController', ['$scope', '$location',
         }
 
         $scope.loadTabNames = function (ds) {
-            ElasticService.clusterRequest2("/eser/indexmsg/getTabNamesByDs?dsId=" + $scope.dsId,
+            ElasticService.clusterRequest2("/eserknife/indexmsg/getTabNamesByDs?dsId=" + $scope.dsId,
                 'GET', "", {}, {},
                 function (res) {
                     if (res) {
@@ -5181,7 +5181,7 @@ function db_table_handlerNew($scope, $location, ElasticService) {
     $scope.$watch('tabNameIndexManager', function (current, previous) {
         if (isDefined(current)) {
             $scope.source.url = 'http://' + $location.$$host + ':' + $location.$$port
-                + '/eser/indexmsg/getColInfoByTabname?dsId='
+                + '/eserknife/indexmsg/getColInfoByTabname?dsId='
                 +$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
             $('#dbcol-gridIndexManager').jqxGrid('clearselection');
             $('#dbcol-gridIndexManager').jqxGrid('updatebounddata');
@@ -5191,7 +5191,7 @@ function db_table_handlerNew($scope, $location, ElasticService) {
 }
 function db_column_handlerNew($scope, $location) {
     $scope.dataurl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
+        + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
 
     $scope.source = {
         datatype: "json",
@@ -5312,7 +5312,7 @@ kopf.controller('IndexManageController', ['$scope', '$location',
         $scope.generateSqlArea = function () {
             var all_ddls = $('#sqlAreaIndexManager').jqxTextArea('val');
 
-            ElasticService.clusterRequest3("/eser/indexmsg/parseSql",
+            ElasticService.clusterRequest3("/eserknife/indexmsg/parseSql",
                 'POST',{
                     sql:all_ddls,
                     clusterName:clusterName
@@ -5458,7 +5458,7 @@ kopf.controller('IndexManageController', ['$scope', '$location',
 
 
         $scope.loadDataSources = function(){
-            ElasticService.clusterRequest2("/eser/indexmsg/getDataSource",
+            ElasticService.clusterRequest2("/eserknife/indexmsg/getDataSource",
                 'GET', "", {}, {},
                 function (res) {
                     if (res) {
@@ -5469,7 +5469,7 @@ kopf.controller('IndexManageController', ['$scope', '$location',
         }
 
         $scope.loadTabNames = function (dsId) {
-            ElasticService.clusterRequest2("/eser/indexmsg/getTabNamesByDs?dsId=" + dsId,
+            ElasticService.clusterRequest2("/eserknife/indexmsg/getTabNamesByDs?dsId=" + dsId,
                 'GET', "", {}, {},
                 function (res) {
                     if (res) {
@@ -5534,7 +5534,7 @@ function db_table_handlerNew($scope, $location, ElasticService) {
     $scope.$watch('tabNameIndexManager', function (current, previous) {
         if (isDefined(current)) {
             $scope.source.url = 'http://' + $location.$$host + ':' + $location.$$port
-                + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
+                + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
             $('#dbcol-gridIndexManager').jqxGrid('clearselection');
             $('#dbcol-gridIndexManager').jqxGrid('updatebounddata');
         }
@@ -5544,7 +5544,7 @@ function db_table_handlerNew($scope, $location, ElasticService) {
 
 function db_column_handlerNew($scope, $location) {
     $scope.dataurl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
+        + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
 
     $scope.source = {
         datatype: "json",
@@ -5704,7 +5704,7 @@ function typeHandler_type($scope, ElasticService, AlertService) {
     });
 }
 function  loadDataSources($scope,ElasticService){
-    ElasticService.clusterRequest2("/eser/indexmsg/getDataSource",
+    ElasticService.clusterRequest2("/eserknife/indexmsg/getDataSource",
         'GET', "", {}, {},
         function (res) {
             if (res) {
@@ -5724,7 +5724,7 @@ function db_table_handler_type($scope, $location, ElasticService) {
     $scope.$watch('tabName', function (current, previous) {
         if (isDefined(current)) {
             $scope.source.url = 'http://' + $location.$$host + ':' + $location.$$port
-                + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
+                + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
             $('#dbcol-grid_from_type').jqxGrid('clearselection');
             $('#dbcol-grid_from_type').jqxGrid('updatebounddata');
         }
@@ -5734,7 +5734,7 @@ function db_table_handler_type($scope, $location, ElasticService) {
 
     $scope.loadTabNames = function (ds) {
 
-        ElasticService.clusterRequest2("/eser/indexmsg/getTabNamesByDs?dsId=" + $scope.dsId,
+        ElasticService.clusterRequest2("/eserknife/indexmsg/getTabNamesByDs?dsId=" + $scope.dsId,
             'GET', "", {}, {},
             function (res) {
                 if (res) {
@@ -5768,7 +5768,7 @@ function demo_handler_type($scope, $location,AlertService){
         $scope.selectedDemoArr = [];
     };
     $scope.demoUrl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/indexmsg/getDemoData';
+        + '/eserknife/indexmsg/getDemoData';
     $scope.demoSource = {
         datatype: "json",
         url: $scope.demoUrl,
@@ -5810,7 +5810,7 @@ function demo_handler_type($scope, $location,AlertService){
 }
 function db_column_handler_type($scope, $location) {
     $scope.dataurl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
+        + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
 
     $scope.source = {
         datatype: "json",
@@ -5888,7 +5888,7 @@ function toolActionHandler_type($scope, AlertService,ElasticService) {
     $scope.generateSqlArea = function () {
         var all_ddls = $('#sqlArea_from_type').jqxTextArea('val');
 
-        ElasticService.clusterRequest3("/eser/indexmsg/parseSql",
+        ElasticService.clusterRequest3("/eserknife/indexmsg/parseSql",
             'POST',{
                 sql:all_ddls,
                 clusterName:clusterName
@@ -5966,7 +5966,7 @@ function submitActionHandler_type($scope, ElasticService, AlertService, ConfirmD
             typeName:$scope.field_type,
             newColsJson:$scope.submitJsonBody
         };
-        ElasticService.clusterRequest2("/eser/indexmsg/addNewType",
+        ElasticService.clusterRequest2("/eserknife/indexmsg/addNewType",
             'POST',
             "",
             params,
@@ -6427,7 +6427,7 @@ kopf.controller('ImportIndexController', ['$scope', '$location','$timeout',
 
         $scope.loadIndex = function (){
             if(!$('#indicesForm').jqxValidator('validate')) return;
-            var target = "/eser/indexmsg/getIndexList?clusterName="+clusterName
+            var target = "/eserknife/indexmsg/getIndexList?clusterName="+clusterName
                 +"&clusterAddr="+$scope.cluster_addr+":"+$scope.cluster_port+"&userpass="+$scope.cluster_userpass;
             ElasticService.clusterRequest3(target,
                 'GET',
@@ -6451,7 +6451,7 @@ kopf.controller('ImportIndexController', ['$scope', '$location','$timeout',
             }
             var indicesVal = JSON.stringify($scope.selectedIndics);
             console.log("indicesVal = "+indicesVal);
-            ElasticService.clusterRequest3("/eser/indexmsg/importIndex",
+            ElasticService.clusterRequest3("/eserknife/indexmsg/importIndex",
                 'POST',
                 {
                     indices:indicesVal,
@@ -6546,7 +6546,7 @@ kopf.controller('ManagerIndexController', ['$scope', '$location',
                 return;
             }
 
-            ElasticService.clusterRequest3("/eser/indexmsg/parseSql",
+            ElasticService.clusterRequest3("/eserknife/indexmsg/parseSql",
                 'POST',{
                     sql:all_ddls,
                     clusterName:clusterName
@@ -6668,7 +6668,7 @@ kopf.controller('ManagerIndexController', ['$scope', '$location',
                 if(body){
                     if (!isDefined($scope.managerEditor.error)) {
                         var params={"clusterName":clusterName,"data":body,"url":url,"method":method};
-                        ElasticService.clusterRequest2("/eser/indexmsg/indexManager" +
+                        ElasticService.clusterRequest2("/eserknife/indexmsg/indexManager" +
                             "", 'POST', {}, params, {},
                             function (res) {
                                 $("#confirm_dialog2").hide();
@@ -6707,7 +6707,7 @@ kopf.controller('ManagerIndexController', ['$scope', '$location',
         }
 
         $scope.loadDataSources = function(){
-            ElasticService.clusterRequest2("/eser/indexmsg/getDataSource",
+            ElasticService.clusterRequest2("/eserknife/indexmsg/getDataSource",
                 'GET', "", {}, {},
                 function (res) {
                     if (res) {
@@ -6719,7 +6719,7 @@ kopf.controller('ManagerIndexController', ['$scope', '$location',
         }
 
         $scope.loadTabNames = function (dsId) {
-            ElasticService.clusterRequest2("/eser/indexmsg/getTabNamesByDs?dsId=" + dsId,
+            ElasticService.clusterRequest2("/eserknife/indexmsg/getTabNamesByDs?dsId=" + dsId,
                 'GET', "", {}, {},
                 function (res) {
                     if (res) {
@@ -7079,7 +7079,7 @@ function db_table_handlerNew($scope, $location) {
     $scope.$watch('tabNameIndexManager', function (current, previous) {
         if (isDefined(current)) {
             $scope.source.url = 'http://' + $location.$$host + ':' + $location.$$port
-                + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
+                + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabNameIndexManager+'&clusterName='+clusterName;
             $('#dbcol-gridIndexManager').jqxGrid('clearselection');
             $('#dbcol-gridIndexManager').jqxGrid('updatebounddata');
         }
@@ -7096,7 +7096,7 @@ function db_table_handler_update($scope, $location) {
     $scope.$watch('updateTabName', function (current, previous) {
         if (isDefined(current)) {
             $scope.updateSource.url = 'http://' + $location.$$host + ':' + $location.$$port
-                + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsUpdateId+'&tabName='
+                + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsUpdateId+'&tabName='
                 + $scope.updateTabName+'&clusterName='+clusterName;
 
             $('#update_dbcol-gridIndexManager').jqxGrid('clearselection');
@@ -7109,7 +7109,7 @@ function db_table_handler_update($scope, $location) {
 
 function db_column_handler_update($scope, $location) {
     $scope.updateUrl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/indexmsg/getColInfoByTabname?dsId='+(isDefined($scope.dsUpdateId)?$scope.dsUpdateId:"")+
+        + '/eserknife/indexmsg/getColInfoByTabname?dsId='+(isDefined($scope.dsUpdateId)?$scope.dsUpdateId:"")+
         '&tabName=' + (isDefined($scope.updateTabName)?$scope.updateTabName:"")+'&clusterName='+clusterName;
     $scope.updateSource = {
         datatype: "json",
@@ -7166,7 +7166,7 @@ function db_column_handler_update($scope, $location) {
 
 function db_column_handlerNew($scope, $location) {
     $scope.dataurl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/indexmsg/getColInfoByTabname?dsId='+(isDefined($scope.dsId)?$scope.dsId:"")+
+        + '/eserknife/indexmsg/getColInfoByTabname?dsId='+(isDefined($scope.dsId)?$scope.dsId:"")+
     '&tabName=' + (isDefined($scope.tabNameIndexManager)?$scope.tabNameIndexManager:"")+'&clusterName='+clusterName;
     $scope.source = {
         datatype: "json",
@@ -7442,7 +7442,7 @@ kopf.controller('SettingIndexController', ['$scope', '$location',
 
         $scope.saveSetting = function saveSetting(newSettings,index,settingName) {
             var settingStr = btoa(JSON.stringify(newSettings)); // angular post nested json 报403,先对其base64处理
-            ElasticService.clusterRequest3("/eser/indexmsg/settingIndex",
+            ElasticService.clusterRequest3("/eserknife/indexmsg/settingIndex",
                 'POST',
                 {
                     settings: settingStr,
@@ -7791,7 +7791,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
     $($(".select_clustom_time")[0]).addClass("select");
 
     $scope.loadHost = function () {
-        ElasticService.clusterRequest2("/eser/monitor/getHosts?clusterName="+clusterName,
+        ElasticService.clusterRequest2("/eserknife/monitor/getHosts?clusterName="+clusterName,
             'GET', "", {}, {},
             function (res) {
                 if (res.success) {
@@ -7839,7 +7839,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
             $('#'+dataType).empty();
             $('#'+dataType).append('<div id="'+dataType+'tt"></div>');
             $('#'+dataType+'tt').jqxLoader({theme:"metrodark", text:'',width: 40, height: 35, imagePosition: 'top', autoOpen: true });
-            ElasticService.clusterRequest2("/eser/monitor/getMonitorInfo",
+            ElasticService.clusterRequest2("/eserknife/monitor/getMonitorInfo",
                 'POST', "",
                 {
                     "clusterName":clusterName,
@@ -7977,7 +7977,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('resouceUsed');
@@ -8037,7 +8037,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('heapMem');
@@ -8122,7 +8122,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('GC');
@@ -8192,7 +8192,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('indicesSegments');
@@ -8250,7 +8250,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('search_requests_per_second');
@@ -8315,7 +8315,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('search_time_per_second');
@@ -8380,7 +8380,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('indexing_requests_per_second');
@@ -8445,7 +8445,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('indexing_time_per_second');
@@ -8510,7 +8510,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('get_requests_per_second');
@@ -8582,7 +8582,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('get_time_per_second');
@@ -8654,7 +8654,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall(data.option.title[0].text);
@@ -8729,7 +8729,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('threads');
@@ -8794,7 +8794,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('mem');
@@ -8875,7 +8875,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('channels');
@@ -8940,7 +8940,7 @@ function ($scope, $location, ExternalSettingsService, ElasticService,AlertServic
                         myButtons:{
                             show:true,
                             title:'缩放',
-                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eser/resources/kopf/imgs/more.png',
+                            icon:'image://http://'+$location.$$host+':'+$location.$$port+'/eserknife/resources/kopf/imgs/more.png',
                             option:{},
                             onclick:function(data) {
                                 $scope.drawEchartBigOrSmall('transport_size');
@@ -9232,7 +9232,7 @@ kopf.controller('QueryController', ['$scope', '$location','$timeout',
         	}
         	 var params = {name:name,indexName:$scope.curIndex,maxNum:$scope.resultMaxNum,queryConditions:conditions};
              var url = 'http://'+$location.$$host+':'+$location.$$port
-                 +'/eser/queryCollection/save?clusterName='+clusterName;
+                 +'/eserknife/queryCollection/save?clusterName='+clusterName;
              $('#jqxLoader').jqxLoader('open');
              ElasticService.clusterRequest2(url,'POST', "", params, {},
                  function(response) {
@@ -9270,7 +9270,7 @@ kopf.controller('QueryController', ['$scope', '$location','$timeout',
             //console.log(params);
             params.conds = JSON.stringify(conditions);
             var url = 'http://'+$location.$$host+':'+$location.$$port
-                +'/eser/query/proxy?clusterName='+clusterName;
+                +'/eserknife/query/proxy?clusterName='+clusterName;
 
             $('#jqxLoader').jqxLoader('open');
             ElasticService.clusterRequest2(url,'POST', "", params, {},
@@ -9298,7 +9298,7 @@ kopf.controller('QueryController', ['$scope', '$location','$timeout',
             //console.log(params);
             params.conds = JSON.stringify(conditions);
             var url = 'http://'+$location.$$host+':'+$location.$$port
-                +'/eser/query/exportOrDelete?clusterName='+clusterName;
+                +'/eserknife/query/exportOrDelete?clusterName='+clusterName;
 
             $("#submit4Deldoc").click();
             ConfirmDialogService2.open(
@@ -9588,7 +9588,7 @@ kopf.controller('QueryController', ['$scope', '$location','$timeout',
                 var value = item.value;
                 if (isDefined(value)) {
                     $scope.curIndex = value;
-                    source.url = "http://"+$location.$$host+':'+$location.$$port+'/eser/query/getFieldInfos?clusterName='+clusterName
+                    source.url = "http://"+$location.$$host+':'+$location.$$port+'/eserknife/query/getFieldInfos?clusterName='+clusterName
                         +'&queryString=&indexName='+$scope.curIndex;
                     dataAdapter.dataBind();  // 刷新绑定的数据
                 }
@@ -9602,7 +9602,7 @@ kopf.controller('QueryController', ['$scope', '$location','$timeout',
                 { name: 'fName' },
                 { name: 'fValue' }
             ],
-            url: "http://"+$location.$$host+':'+$location.$$port+'/eser/query/getFieldInfos?clusterName='+clusterName
+            url: "http://"+$location.$$host+':'+$location.$$port+'/eserknife/query/getFieldInfos?clusterName='+clusterName
                     +'&indexName=&queryString='
         };
         var dataAdapter = new $.jqx.dataAdapter(source);
@@ -9712,7 +9712,7 @@ function QueryCondition(cid,logicOps,fieldName,opsType,qText,gtOps,gtText,ltOps,
 
 function db_column_handler_type_query($scope, $location,AlertService) {
     $scope.dataurl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/queryCollection/getList?clusterName='+clusterName;
+        + '/eserknife/queryCollection/getList?clusterName='+clusterName;
     $scope.source = {
         datatype: "json",
         datafields: [
@@ -9771,7 +9771,7 @@ function db_column_handler_type_query($scope, $location,AlertService) {
         if(colName.indexOf("清除") > 0){
         	var id =event.args.value.substr(event.args.value.indexOf("(")+1,event.args.value.indexOf(")")-event.args.value.indexOf("(")-1);
 	       	 var url = 'http://' + $location.$$host + ':' + $location.$$port
-	         + '/eser/queryCollection/updateState?id='+id+'&clusterName='+clusterName;
+	         + '/eserknife/queryCollection/updateState?id='+id+'&clusterName='+clusterName;
 	         $.ajax({
 	             url: url,
 	             cache: false
@@ -9789,7 +9789,7 @@ function db_column_handler_type_query($scope, $location,AlertService) {
         	return;
         }else{
         	 var url = 'http://' + $location.$$host + ':' + $location.$$port
-             + '/eser/queryCollection/getDetailByName?name='+colName+'&clusterName='+clusterName;
+             + '/eserknife/queryCollection/getDetailByName?name='+colName+'&clusterName='+clusterName;
              $.ajax({
                  url: url,
                  cache: false
@@ -9997,7 +9997,7 @@ function submitActionHandler($scope, ElasticService, AlertService, ConfirmDialog
             clusterName: clusterName,
             newColsJson: $scope.editor.getValue()
         };
-        ElasticService.clusterRequest2("/eser/indexmsg/reindex",
+        ElasticService.clusterRequest2("/eserknife/indexmsg/reindex",
             'POST',
             "",
             params,
@@ -10184,7 +10184,7 @@ kopf.controller('RestController', ['$scope', '$location', '$timeout',
                     console.log($scope.request.body);
 
                     var url = 'http://'+$location.$$host+':'+$location.$$port
-                        +'/eser/rest/proxy?clusterName='+clusterName;
+                        +'/eserknife/rest/proxy?clusterName='+clusterName;
                     var params = {
                         targetMethod:$scope.request.method,
                         targetPath:path,
@@ -10227,7 +10227,7 @@ kopf.controller('RestController', ['$scope', '$location', '$timeout',
                 var requireContent= data[0].data;
                 var params = {name:name,requireUrl:requireUrl,requireContent:requireContent,requireMethod:requireMethod};
                 var url = 'http://'+$location.$$host+':'+$location.$$port
-                    +'/eser/queryClientCollection/save?clusterName='+clusterName;
+                    +'/eserknife/queryClientCollection/save?clusterName='+clusterName;
                 $('#jqxLoaderClient').jqxLoader('open');
                 ElasticService.clusterRequest2(url,'POST', "", params, {},
                     function(response) {
@@ -10374,7 +10374,7 @@ kopf.controller('RestController', ['$scope', '$location', '$timeout',
 
 function db_column_handler_type_client($scope, $location,AlertService) {
     $scope.dataurl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/queryClientCollection/getList?clusterName='+clusterName;
+        + '/eserknife/queryClientCollection/getList?clusterName='+clusterName;
     $scope.source = {
         datatype: "json",
         datafields: [
@@ -10430,7 +10430,7 @@ function db_column_handler_type_client($scope, $location,AlertService) {
         if(colName.indexOf("清除") > 0){
         	var id =event.args.value.substr(event.args.value.indexOf("(")+1,event.args.value.indexOf(")")-event.args.value.indexOf("(")-1);
 	       	 var url = 'http://' + $location.$$host + ':' + $location.$$port
-	         + '/eser/queryClientCollection/updateState?id='+id+'&clusterName='+clusterName;
+	         + '/eserknife/queryClientCollection/updateState?id='+id+'&clusterName='+clusterName;
 	         $.ajax({
 	             url: url,
 	             cache: false
@@ -10448,7 +10448,7 @@ function db_column_handler_type_client($scope, $location,AlertService) {
         	return;
         }else{
         	 var url = 'http://' + $location.$$host + ':' + $location.$$port
-             + '/eser/queryClientCollection/getDetailByName?name='+colName+'&clusterName='+clusterName;
+             + '/eserknife/queryClientCollection/getDetailByName?name='+colName+'&clusterName='+clusterName;
              $.ajax({
                  url: url,
                  cache: false
@@ -11162,7 +11162,7 @@ function indexUpdateMapComboboxHandler($scope, $timeout) {
 }
 
 function loadDataSources($scope,ElasticService){
-    ElasticService.clusterRequest2("/eser/indexmsg/getDataSource",
+    ElasticService.clusterRequest2("/eserknife/indexmsg/getDataSource",
         'GET', "", {}, {},
         function (res) {
             if (res) {
@@ -11220,7 +11220,7 @@ function db_table_handler($scope, $location, ElasticService) {
     $scope.$watch('tabName', function (current, previous) {
         if (isDefined(current)) {
             $scope.source.url = 'http://' + $location.$$host + ':' + $location.$$port
-                + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
+                + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
             $('#dbcol-grid').jqxGrid('clearselection');
             $('#dbcol-grid').jqxGrid('updatebounddata');
         }
@@ -11229,7 +11229,7 @@ function db_table_handler($scope, $location, ElasticService) {
 
     $scope.loadTabNames = function (ds) {
 
-        ElasticService.clusterRequest2("/eser/indexmsg/getTabNamesByDs?dsId=" + $scope.dsId,
+        ElasticService.clusterRequest2("/eserknife/indexmsg/getTabNamesByDs?dsId=" + $scope.dsId,
             'GET', "", {}, {},
             function (res) {
                 if (res) {
@@ -11241,7 +11241,7 @@ function db_table_handler($scope, $location, ElasticService) {
 }
 function db_column_handler($scope, $location) {
     $scope.dataurl = 'http://' + $location.$$host + ':' + $location.$$port
-        + '/eser/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
+        + '/eserknife/indexmsg/getColInfoByTabname?dsId='+$scope.dsId+'&tabName=' + $scope.tabName+'&clusterName='+clusterName;
 
     $scope.source = {
         datatype: "json",
@@ -11319,7 +11319,7 @@ function toolActionHandler($scope, AlertService,ElasticService) {
     $scope.generateSqlArea = function () {
         var all_ddls = $('#sqlArea').jqxTextArea('val');
 
-        ElasticService.clusterRequest3("/eser/indexmsg/parseSql",
+        ElasticService.clusterRequest3("/eserknife/indexmsg/parseSql",
             'POST',{
                 sql:all_ddls,
                 clusterName:clusterName
@@ -11383,7 +11383,7 @@ function submitActionHandler($scope, ElasticService, AlertService, ConfirmDialog
             typeName: $scope.field_type,
             newColsJson: $scope.submitJsonBody
         };
-        ElasticService.clusterRequest2("/eser/indexmsg/addNewCols",
+        ElasticService.clusterRequest2("/eserknife/indexmsg/addNewCols",
             'POST',
             "",
             params,
